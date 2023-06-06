@@ -1,0 +1,45 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.left-column,
+.right-column {
+  border: solid red;
+  display: flex;
+  justify-content: center;
+  height: 600px;
+  width: 300px;
+}
+
+.left-column {
+
+}
+
+.right-column {
+
+}
+
+h3 {
+  border: solid green;
+  height: 75px;
+}
+
+h2 {
+  border: solid purple;
+  height: 75px;
+  text-align: center;
+}
+.game-area {
+  border: solid yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 600px;
+  width: 500px
+}
+
+.game-grid {
+  border: solid blue;
+  text-align: center;
+}
