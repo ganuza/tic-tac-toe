@@ -44,6 +44,7 @@ function showPlayerTurn() {
 
 
 
+
 // var gameBoard = {{player},{player2}};
 //  // cell num;
 //  // open: default true;
@@ -72,3 +73,5 @@ function showPlayerTurn() {
 //     wins: 0,
 //   }
 // }
+=======
+
