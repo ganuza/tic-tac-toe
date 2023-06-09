@@ -11,7 +11,13 @@ var players = [];
 
 // event listeners
 
-
+window.addEventListener('load', function() {
+  var triumphIcon = 'assets/triumph_motorcycles_icon.png'
+  createPlayer('one', triumphIcon);
+  createPlayer('two', 'O');
+  randomizeStart(players);
+  showPlayerTurn()
+})
 
 // functions
 
