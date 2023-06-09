@@ -25,7 +25,11 @@ function createPlayer(id, token) {
   return players
 }
 
-
+function getRandomPlayer(numPlayers) {
+  var startingPlayer = Math.floor(Math.random() * numPlayers.length + 1);
+  console.log('start:', startingPlayer);
+  return startingPlayer
+}
 
 
 
