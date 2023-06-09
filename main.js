@@ -6,7 +6,7 @@ var players = [];
 
 // query selectors
 
-
+var playerTurn = document.querySelector('h2');
 
 
 // event listeners
@@ -38,7 +38,7 @@ function getRandomPlayer(numPlayers) {
 }
 
 function showPlayerTurn() {
-  playerTurn.innerText = `It's Player variable's Turn`
+  playerTurn.innerText = `It's Player Variable's Turn`
 }
 
 
