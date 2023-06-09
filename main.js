@@ -15,7 +15,7 @@ window.addEventListener('load', function() {
   var triumphIcon = 'assets/triumph_motorcycles_icon.png'
   createPlayer('one', triumphIcon);
   createPlayer('two', 'O');
-  randomizeStart(players);
+  getRandomPlayer(players);
   showPlayerTurn()
 })
 
@@ -37,7 +37,9 @@ function getRandomPlayer(numPlayers) {
   return startingPlayer
 }
 
-
+function showPlayerTurn() {
+  playerTurn.innerText = `It's Player variable's Turn`
+}
 
 
 
