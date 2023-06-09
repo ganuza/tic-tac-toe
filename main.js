@@ -2,12 +2,18 @@
 
 var players = [];
 
+var gameBoard = ['X','','O','','X','','O','',''];
 
+var currentPlayer = '';
 
 // query selectors
 
 var playerTurn = document.querySelector('h2');
+var gridSquareIds = document.querySelector('.play-grid');
 
+var playGrid = document.querySelector('.play-grid')
+
+var gridSquares = document.querySelectorAll('.grid-squares')
 
 // event listeners
 
@@ -15,9 +21,13 @@ window.addEventListener('load', function() {
   var triumphIcon = 'assets/triumph_motorcycles_icon.png'
   createPlayer('one', triumphIcon);
   createPlayer('two', 'O');
-  getRandomPlayer(players);
-  showPlayerTurn()
+  // getRandomPlayer(players);
+  showGrid();
+  showPlayerTurn();
 })
+
+// square0.addEventListener('click', showCurrentPlayerToken)
+
 
 // functions
 
@@ -31,18 +41,34 @@ function createPlayer(id, token) {
   return players
 }
 
-function getRandomPlayer(numPlayers) {
-  var startingPlayer = Math.floor(Math.random() * numPlayers.length + 1);
-  console.log('start:', startingPlayer);
-  return startingPlayer
-}
+// function getRandomPlayer(numPlayers) {
+//   var startingPlayer = Math.floor(Math.random() * numPlayers.length + 1);
+//   console.log('start:', startingPlayer);
+//   return startingPlayer
+// }
 
 function showPlayerTurn() {
   playerTurn.innerText = `It's Player Variable's Turn`
 }
 
+function showGrid() {
+  playGrid.innerHTML = '';
+    for (var i = 0; i < gameBoard.length; i ++) {
+      playGrid.innerHTML += 
+      `<article class="grid-square" id="square${i}">
+        <p>${gameBoard[i]}</p>
+      </article>`
+  }
 
+}
 
+function showCurrentPlayerToken() {
+  console.log('you clicked me')
+  
+  square0.innerText = 'X'
+ 
+  
+}
 
 
 // var gameBoard = {{player},{player2}};
@@ -73,5 +99,5 @@ function showPlayerTurn() {
 //     wins: 0,
 //   }
 // }
-=======
+
 
