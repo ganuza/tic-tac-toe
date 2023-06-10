@@ -2,7 +2,7 @@
 
 var players = [];
 
-var gameBoard = ['X','','O','','X','','O','',''];
+var gameBoard = ['','','','','','','','',''];
 
 var currentPlayer = 0;
 
@@ -18,12 +18,14 @@ var gridSquares = document.querySelectorAll('.grid-squares')
 // event listeners
 
 window.addEventListener('load', function() {
-  var triumphIcon = 'assets/triumph_motorcycles_icon.png'
+  var triumphIcon = '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
+  var ducatiIcon ='<img class="ducati-icon" src="assets/ducati_icon.png" alt="Ducati Icon"/>'
   createPlayer('one', triumphIcon);
-  createPlayer('two', 'O');
+  createPlayer('two', ducatiIcon);
   // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
+
 })
 
 playGrid.addEventListener('click', function(event) {
@@ -72,8 +74,8 @@ function showGrid() {
 function showCurrentPlayerToken() {
   console.log('you clicked me')
   
-  square0.innerText = 'X'
- 
+  square0.innerHTML = players[currentPlayer].token
+//  '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
   
 }
 
