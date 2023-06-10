@@ -30,7 +30,8 @@ window.addEventListener('load', function() {
 
 playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
-  showCurrentPlayerToken(event);
+  setCurrentPlayerTokenToGameBoardIndex(event);
+  showGrid();
   togglePlayerTurn();
   showPlayerTurn();
 })
@@ -71,12 +72,19 @@ function showGrid() {
 
 }
 
-function showCurrentPlayerToken() {
-  console.log('you clicked me')
+
+// function showCurrentPlayerToken() {
+//   console.log('you clicked me')
   
-  square0.innerHTML = players[currentPlayer].token
+//   square0.innerHTML = players[currentPlayer].token
 //  '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
   
+// }
+
+function setCurrentPlayerTokenToGameBoardIndex(event) {
+  var indexPos = event.target.closest('article').id
+  var indexPosition = parseInt(indexPos.slice(-1))
+  if (gameBoard[indexPosition] === '') {gameBoard [indexPosition] = players       [currentPlayer].token};
 }
 
 function togglePlayerTurn() {
