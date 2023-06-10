@@ -4,11 +4,11 @@ var players = [];
 
 var gameBoard = ['X','','O','','X','','O','',''];
 
-var currentPlayer = '';
+var currentPlayer = 0;
 
 // query selectors
 
-var playerTurn = document.querySelector('h2');
+var playerTurn = document.querySelector('h1');
 var gridSquareIds = document.querySelector('.play-grid');
 
 var playGrid = document.querySelector('.play-grid')
@@ -23,6 +23,13 @@ window.addEventListener('load', function() {
   createPlayer('two', 'O');
   // getRandomPlayer(players);
   showGrid();
+  showPlayerTurn();
+})
+
+playGrid.addEventListener('click', function(event) {
+  console.log('clicked square: ', event.target)
+  showCurrentPlayerToken(event);
+  togglePlayerTurn();
   showPlayerTurn();
 })
 
@@ -48,7 +55,7 @@ function createPlayer(id, token) {
 // }
 
 function showPlayerTurn() {
-  playerTurn.innerText = `It's Player Variable's Turn`
+  playerTurn.innerText = `It's Player ${currentPlayer}'s Turn`
 }
 
 function showGrid() {
@@ -70,6 +77,11 @@ function showCurrentPlayerToken() {
   
 }
 
+function togglePlayerTurn() {
+  if (currentPlayer === 0) {
+    currentPlayer = 1;
+  } else currentPlayer = 0;
+}
 
 // var gameBoard = {{player},{player2}};
 //  // cell num;
