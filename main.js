@@ -65,9 +65,7 @@ function showGrid() {
   playGrid.innerHTML = '';
     for (var i = 0; i < gameBoard.length; i ++) {
       playGrid.innerHTML += 
-      `<article class="grid-square" id="square${i}">
-        <p>${gameBoard[i]}</p>
-      </article>`
+      `<article class="grid-square" id="square${i}">${gameBoard[i]}</article>`
   }
 
 }
