@@ -11,17 +11,21 @@ var currentPlayer = 0;
 var playerTurn = document.querySelector('h1');
 var gridSquareIds = document.querySelector('.play-grid');
 
-var playGrid = document.querySelector('.play-grid')
+var playGrid = document.querySelector('.play-grid');
 
-var gridSquares = document.querySelectorAll('.grid-squares')
+var gridSquares = document.querySelectorAll('.grid-squares');
+
+var player0Wins = document.querySelector('.player-0-wins');
+var player1Wins = document.querySelector('.player-1-wins');
+var banner = document.querySelector('h1');
 
 // event listeners
 
 window.addEventListener('load', function() {
   var triumphIcon = '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
   var ducatiIcon ='<img class="ducati-icon" src="assets/ducati_icon.png" alt="Ducati Icon"/>'
-  createPlayer('one', triumphIcon);
-  createPlayer('two', ducatiIcon);
+  createPlayer('Triumph', triumphIcon);
+  createPlayer('Ducati', ducatiIcon);
   // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
@@ -32,20 +36,31 @@ playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
   setCurrentPlayerTokenToGameBoardIndex(event);
   showGrid();
-  showPlayerTurn();
+  if (checkForWin()) {
+    increaseWins();
+  } else {checkForDraw()
+  }
+
+
   togglePlayerTurn();
+  showPlayerTurn();
+  displayWins();
 })
+ 
+  // checkForDraw();
+
 
 // square0.addEventListener('click', showCurrentPlayerToken)
 
 
 // functions
 
-function createPlayer(id, token) {
+function createPlayer(id, token, turn) {
   var player = {
     id: id,
     token: token,
     wins: 0,
+    turn: false,
   }
   players.push(player)
   return players
@@ -58,6 +73,7 @@ function createPlayer(id, token) {
 // }
 
 function showPlayerTurn() {
+  console.log('currentPlayer in showPlayerTurn:',currentPlayer)
   playerTurn.innerText = `It's Player ${currentPlayer}'s Turn`
 }
 
@@ -91,6 +107,53 @@ function togglePlayerTurn() {
   } else currentPlayer = 0;
 }
 
+function checkForWin() {
+  // checks for row wins
+  for (var i = 0; i < gameBoard.length; i +=3) {
+    if (gameBoard[i] === gameBoard[i+1] && gameBoard[i+1] === gameBoard[i+2] && gameBoard[i] !== '') {
+      console.log('currentPlayer in checkForWin:',currentPlayer)
+      console.log(`player ${currentPlayer} wins!`)
+      return true;
+    }
+  }
+  // checks for column wins
+  for (var i = 0; i < gameBoard.length; i ++) {
+    if (gameBoard[i] === gameBoard[i+3] && gameBoard[i+3] === gameBoard[i+6] && gameBoard[i] !== '') {
+      console.log(`player ${currentPlayer} wins!`)
+      return true;
+    } 
+  }
+  // checks for diagonal win
+  if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== '') {
+      console.log(`player ${currentPlayer} wins!`)
+      return true;
+  }
+  // checks for diagonal win
+  if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== '') {
+      console.log(`player ${currentPlayer} wins!`)
+      return true;
+  } 
+  return false
+}
+
+function increaseWins() {
+  return players[currentPlayer].wins += 1;
+}
+
+function checkForDraw() {
+  if (!gameBoard.includes('')) {
+    console.log(`It's a DRAW!`)
+    
+    banner.innerHTML += `<p class="banner">"It's a Draw!"</p>`
+    return true;
+  }
+}
+
+function displayWins() {
+  player0Wins.innerHTML = `Wins: ${players[0].wins}`
+  player1Wins.innerHTML = `Wins: ${players[1].wins}`
+  
+}
 // var gameBoard = {{player},{player2}};
 //  // cell num;
 //  // open: default true;
@@ -119,5 +182,4 @@ function togglePlayerTurn() {
 //     wins: 0,
 //   }
 // }
-
 
