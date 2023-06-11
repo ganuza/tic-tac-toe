@@ -32,8 +32,8 @@ playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
   setCurrentPlayerTokenToGameBoardIndex(event);
   showGrid();
-  togglePlayerTurn();
   showPlayerTurn();
+  togglePlayerTurn();
 })
 
 // square0.addEventListener('click', showCurrentPlayerToken)
@@ -82,7 +82,7 @@ function showGrid() {
 function setCurrentPlayerTokenToGameBoardIndex(event) {
   var indexPos = event.target.closest('article').id
   var indexPosition = parseInt(indexPos.slice(-1))
-  if (gameBoard[indexPosition] === '') {gameBoard [indexPosition] = players       [currentPlayer].token};
+  if (gameBoard[indexPosition] === '') {gameBoard [indexPosition] = players[currentPlayer].token};
 }
 
 function togglePlayerTurn() {
