@@ -2,7 +2,7 @@
 
 var players = [];
 
-var gameBoard = ['X','','O','','X','','O','',''];
+var gameBoard = ['','','','','','','','',''];
 
 var currentPlayer = 0;
 
@@ -18,19 +18,22 @@ var gridSquares = document.querySelectorAll('.grid-squares')
 // event listeners
 
 window.addEventListener('load', function() {
-  var triumphIcon = 'assets/triumph_motorcycles_icon.png'
+  var triumphIcon = '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
+  var ducatiIcon ='<img class="ducati-icon" src="assets/ducati_icon.png" alt="Ducati Icon"/>'
   createPlayer('one', triumphIcon);
-  createPlayer('two', 'O');
+  createPlayer('two', ducatiIcon);
   // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
+
 })
 
 playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
-  showCurrentPlayerToken(event);
-  togglePlayerTurn();
+  setCurrentPlayerTokenToGameBoardIndex(event);
+  showGrid();
   showPlayerTurn();
+  togglePlayerTurn();
 })
 
 // square0.addEventListener('click', showCurrentPlayerToken)
@@ -62,19 +65,24 @@ function showGrid() {
   playGrid.innerHTML = '';
     for (var i = 0; i < gameBoard.length; i ++) {
       playGrid.innerHTML += 
-      `<article class="grid-square" id="square${i}">
-        <p>${gameBoard[i]}</p>
-      </article>`
+      `<article class="grid-square" id="square${i}">${gameBoard[i]}</article>`
   }
 
 }
 
-function showCurrentPlayerToken() {
-  console.log('you clicked me')
+
+// function showCurrentPlayerToken() {
+//   console.log('you clicked me')
   
-  square0.innerText = 'X'
- 
+//   square0.innerHTML = players[currentPlayer].token
+//  '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
   
+// }
+
+function setCurrentPlayerTokenToGameBoardIndex(event) {
+  var indexPos = event.target.closest('article').id
+  var indexPosition = parseInt(indexPos.slice(-1))
+  if (gameBoard[indexPosition] === '') {gameBoard [indexPosition] = players[currentPlayer].token};
 }
 
 function togglePlayerTurn() {

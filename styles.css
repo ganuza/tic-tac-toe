@@ -9,7 +9,8 @@
 .right-column {
   border: solid red;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   height: 600px;
   width: 300px;
   stop-opacity: initial;
@@ -25,14 +26,23 @@
 
 h2 {
   border: solid green;
-  height: 75px;
+  color: white;
 }
 
 h1 {
   border: solid purple;
   color: white;
-  height: 75px;
   text-align: center;
+}
+
+.triumph-icon {
+  height: 70px;
+  width: 70px;
+}
+
+.ducati-icon {
+  height: 50px;
+  width: 50px;
 }
 .game-area {
   background-color: black;
