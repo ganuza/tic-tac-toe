@@ -41,7 +41,12 @@ playGrid.addEventListener('click', function(event) {
   } else {checkForDraw()
   }
 
-
+  if (checkForWin()) {
+    increaseWins()
+    setTimeout(resetGame, 7000);
+  } else if (checkForDraw()) {
+    setTimeout(resetGame, 7000)
+  }
   togglePlayerTurn();
   showPlayerTurn();
   displayWins();
@@ -153,6 +158,21 @@ function displayWins() {
   player0Wins.innerHTML = `Wins: ${players[0].wins}`
   player1Wins.innerHTML = `Wins: ${players[1].wins}`
   
+}
+
+function resetGame() {
+  console.log('reset');
+  console.log('players[0].turn: ',players[0].turn)
+  if (players[0].turn === true) {
+      currentPlayer = 1;
+      players[0].turn = false;
+    } else {currentPlayer = 0;
+    players[0].turn = true}
+  for (var i = 0; i < gameBoard.length; i++) {
+    if (gameBoard[i] !== '') {gameBoard[i] = ''}
+    showGrid();
+    
+  }
 }
 // var gameBoard = {{player},{player2}};
 //  // cell num;
