@@ -33,6 +33,7 @@ playGrid.addEventListener('click', function(event) {
   setCurrentPlayerTokenToGameBoardIndex(event);
   showGrid();
   showPlayerTurn();
+  checkForWin();
   togglePlayerTurn();
 })
 
@@ -90,6 +91,35 @@ function togglePlayerTurn() {
     currentPlayer = 1;
   } else currentPlayer = 0;
 }
+
+function checkForWin() {
+  for (var i = 0; i < gameBoard.length; i +=3) {
+    if (gameBoard[i] === gameBoard[i+1] && gameBoard[i+1] === gameBoard[i+2] && gameBoard[i] !== '') {
+      players[currentPlayer].wins += 1;
+      console.log(`player ${currentPlayer} wins!`)
+    }
+  }
+  for (var i = 0; i < gameBoard.length; i ++) {
+    if (gameBoard[i] === gameBoard[i+3] && gameBoard[i+3] === gameBoard[i+6] && gameBoard[i] !== '') {
+      players[currentPlayer].wins += 1;
+      console.log(`player ${currentPlayer} wins!`)
+    } 
+  }
+  if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== '') {
+      players[currentPlayer].wins += 1;
+      console.log(`player ${currentPlayer} wins!`)
+  }
+  if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== '') {
+      players[currentPlayer].wins += 1;
+      console.log(`player ${currentPlayer} wins!`)
+  }
+}
+  
+for (var i = 0; i < gameBoard.length; i++) {
+    if (gameBoard[i] === '') {
+      console.log(`It's a DRAW!`)
+    }
+  }  
 
 // var gameBoard = {{player},{player2}};
 //  // cell num;
