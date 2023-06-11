@@ -11,12 +11,13 @@ var currentPlayer = 0;
 var playerTurn = document.querySelector('h1');
 var gridSquareIds = document.querySelector('.play-grid');
 
-var playGrid = document.querySelector('.play-grid')
+var playGrid = document.querySelector('.play-grid');
 
-var gridSquares = document.querySelectorAll('.grid-squares')
+var gridSquares = document.querySelectorAll('.grid-squares');
 
-var player0Wins = document.querySelector('.player-0-wins')
-var player1Wins = document.querySelector('.player-1-wins')
+var player0Wins = document.querySelector('.player-0-wins');
+var player1Wins = document.querySelector('.player-1-wins');
+var banner = document.querySelector('h1');
 // event listeners
 
 window.addEventListener('load', function() {
@@ -34,11 +35,13 @@ playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
   setCurrentPlayerTokenToGameBoardIndex(event);
   showGrid();
-  showPlayerTurn();
   checkForWin();
-  // checkForDraw();
-  displayWins();
   togglePlayerTurn();
+  showPlayerTurn();
+  displayWins();
+  
+ 
+  // checkForDraw();
 })
 
 // square0.addEventListener('click', showCurrentPlayerToken)
@@ -63,6 +66,7 @@ function createPlayer(id, token) {
 // }
 
 function showPlayerTurn() {
+  console.log('currentPlayer in showPlayerTurn:',currentPlayer)
   playerTurn.innerText = `It's Player ${currentPlayer}'s Turn`
 }
 
@@ -99,37 +103,41 @@ function togglePlayerTurn() {
 function checkForWin() {
   for (var i = 0; i < gameBoard.length; i +=3) {
     if (gameBoard[i] === gameBoard[i+1] && gameBoard[i+1] === gameBoard[i+2] && gameBoard[i] !== '') {
-      return players[currentPlayer].wins += 1;
+      console.log('currentPlayer in checkForWin:',currentPlayer)
       console.log(`player ${currentPlayer} wins!`)
+      increaseWins();
     }
   }
   for (var i = 0; i < gameBoard.length; i ++) {
     if (gameBoard[i] === gameBoard[i+3] && gameBoard[i+3] === gameBoard[i+6] && gameBoard[i] !== '') {
-      return players[currentPlayer].wins += 1;
       console.log(`player ${currentPlayer} wins!`)
+      increaseWins();
     } 
   }
   if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== '') {
-      return players[currentPlayer].wins += 1;
       console.log(`player ${currentPlayer} wins!`)
+      increaseWins();
   }
   if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== '') {
-      return players[currentPlayer].wins += 1;
       console.log(`player ${currentPlayer} wins!`)
+      increaseWins();  
+  }
+  checkForDraw();
+}
+function increaseWins() {
+  return players[currentPlayer].wins += 1;
+}
+
+function checkForDraw() {
+  if (!gameBoard.includes('')) {
+    console.log(`It's a DRAW!`)
+    banner.innerHTML += `<p class="banner">"It's a Draw!"</p>`
   }
 }
-  
-// function checkForDraw() {
-// for (var i = 0; i < gameBoard.length; i++) {
-//     if (gameBoard[i] === '') {
-//       console.log(`It's a DRAW!`)
-//     }
-//   }  
-// }
 
 function displayWins() {
-  player0Wins.innerHTML = `Wins: ${players[currentPlayer].wins}`
-  player1Wins.innerHTML = `Wins: ${players[currentPlayer].wins}`
+  player0Wins.innerHTML = `Wins: ${players[0].wins}`
+  player1Wins.innerHTML = `Wins: ${players[1].wins}`
   
 }
 // var gameBoard = {{player},{player2}};
