@@ -24,8 +24,8 @@ var banner = document.querySelector('h1');
 window.addEventListener('load', function() {
   var triumphIcon = '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
   var ducatiIcon ='<img class="ducati-icon" src="assets/ducati_icon.png" alt="Ducati Icon"/>'
-  createPlayer('Triumph', triumphIcon);
-  createPlayer('Ducati', ducatiIcon);
+  createPlayer('Triumph', triumphIcon, true);
+  createPlayer('Ducati', ducatiIcon, false);
   // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
@@ -36,11 +36,6 @@ playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
   setCurrentPlayerTokenToGameBoardIndex(event);
   showGrid();
-  if (checkForWin()) {
-    increaseWins();
-  } else {checkForDraw()
-  }
-
   if (checkForWin()) {
     increaseWins()
     setTimeout(resetGame, 7000);
@@ -65,7 +60,7 @@ function createPlayer(id, token, turn) {
     id: id,
     token: token,
     wins: 0,
-    turn: false,
+    turn: turn,
   }
   players.push(player)
   return players
