@@ -5,7 +5,7 @@ var players = [];
 var gameBoard = ['','','','','','','','',''];
 
 var currentPlayer = 0;
-
+var win = false
 // query selectors
 
 var playerTurn = document.querySelector('h1');
@@ -34,14 +34,23 @@ window.addEventListener('load', function() {
 
 playGrid.addEventListener('click', function(event) {
   console.log('clicked square: ', event.target)
+  if (win === true) {
+    return
+  }
   setCurrentPlayerTokenToGameBoardIndex(event);
   showGrid();
   if (checkForWin()) {
     increaseWins()
     announcement.innerText = `player ${currentPlayer} wins!`;
     setTimeout(resetGame, 7000);
+    // showPlayerTurn();
+    displayWins();
+    return
   } else if (checkForDraw(event)) {
     setTimeout(resetGame, 7000)
+    // showPlayerTurn();
+    displayWins();
+    return
   }
   togglePlayerTurn();
   showPlayerTurn();
@@ -121,6 +130,7 @@ function checkForWin() {
     if (gameBoard[i] === gameBoard[i+1] && gameBoard[i+1] === gameBoard[i+2] && gameBoard[i] !== '') {
       console.log('currentPlayer in checkForWin:',currentPlayer)
       console.log(`player ${currentPlayer} wins!`)
+      win = true;
       return true;
     }
   }
@@ -128,17 +138,20 @@ function checkForWin() {
   for (var i = 0; i < gameBoard.length; i ++) {
     if (gameBoard[i] === gameBoard[i+3] && gameBoard[i+3] === gameBoard[i+6] && gameBoard[i] !== '') {
       console.log(`player ${currentPlayer} wins!`)
+      win = true;
       return true;
     } 
   }
   // checks for diagonal win
   if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== '') {
       console.log(`player ${currentPlayer} wins!`)
+      win = true;
       return true;
   }
   // checks for diagonal win
   if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== '') {
       console.log(`player ${currentPlayer} wins!`)
+      win = true;
       return true;
   } 
   return false
@@ -166,7 +179,9 @@ function displayWins() {
 function resetGame() {
   console.log('reset');
   console.log('players[0].turn: ',players[0].turn)
+  
   if (players[0].turn === true) {
+    console.log('TEST')
       currentPlayer = 1;
       players[0].turn = false;
     } else {currentPlayer = 0;
@@ -175,8 +190,9 @@ function resetGame() {
     if (gameBoard[i] !== '') {gameBoard[i] = ''}
     announcement.innerText = '';
     showGrid();
-    
   }
+  showPlayerTurn();
+  win = false;
 }
 // var gameBoard = {{player},{player2}};
 //  // cell num;
