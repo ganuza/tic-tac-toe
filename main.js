@@ -22,8 +22,8 @@ var announcement = document.querySelector('.announcement')
 // event listeners
 
 window.addEventListener('load', function() {
-  var triumphIcon = '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
-  var ducatiIcon ='<img class="ducati-icon" src="assets/ducati_icon.png" alt="Ducati Icon"/>'
+  var triumphIcon = 'triumph'
+  var ducatiIcon ='ducati'
   createPlayer('Triumph', triumphIcon, true);
   createPlayer('Ducati', ducatiIcon, false);
   // getRandomPlayer(players);
@@ -81,8 +81,13 @@ function showPlayerTurn() {
 function showGrid() {
   playGrid.innerHTML = '';
     for (var i = 0; i < gameBoard.length; i ++) {
-      playGrid.innerHTML += 
-      `<article class="grid-square" id="square${i}">${gameBoard[i]}</article>`
+      if (gameBoard[i] === '') {
+        playGrid.innerHTML += `<article class="grid-square" id="square${i}"></article>`
+      } else {
+        playGrid.innerHTML += 
+      `<article class="grid-square" id="square${i}"><img class="${gameBoard[i]}-icon" src="assets/${gameBoard[i]}_icon.png" alt="${gameBoard[i]} icon"</article>`
+      }
+      
   }
 
 }
@@ -99,7 +104,9 @@ function showGrid() {
 function setCurrentPlayerTokenToGameBoardIndex(event) {
   var indexPos = event.target.closest('article').id
   var indexPosition = parseInt(indexPos.slice(-1))
-  if (gameBoard[indexPosition] === '') {gameBoard [indexPosition] = players[currentPlayer].token};
+  if (gameBoard[indexPosition] === '') {
+    gameBoard[indexPosition] = players[currentPlayer].token
+  };
 }
 
 function togglePlayerTurn() {
