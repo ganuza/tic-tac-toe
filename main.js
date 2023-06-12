@@ -18,7 +18,7 @@ var gridSquares = document.querySelectorAll('.grid-squares');
 var player0Wins = document.querySelector('.player-0-wins');
 var player1Wins = document.querySelector('.player-1-wins');
 var banner = document.querySelector('h1');
-
+var announcement = document.querySelector('.announcement')
 // event listeners
 
 window.addEventListener('load', function() {
@@ -38,8 +38,9 @@ playGrid.addEventListener('click', function(event) {
   showGrid();
   if (checkForWin()) {
     increaseWins()
+    announcement.innerText = `player ${currentPlayer} wins!`;
     setTimeout(resetGame, 7000);
-  } else if (checkForDraw()) {
+  } else if (checkForDraw(event)) {
     setTimeout(resetGame, 7000)
   }
   togglePlayerTurn();
@@ -140,18 +141,18 @@ function increaseWins() {
   return players[currentPlayer].wins += 1;
 }
 
-function checkForDraw() {
+function checkForDraw(event) {
   if (!gameBoard.includes('')) {
     console.log(`It's a DRAW!`)
+    announcement.innerText = "It's a DRAW!"
     
-    banner.innerHTML += `<p class="banner">"It's a Draw!"</p>`
     return true;
   }
 }
 
 function displayWins() {
-  player0Wins.innerHTML = `Wins: ${players[0].wins}`
-  player1Wins.innerHTML = `Wins: ${players[1].wins}`
+  player0Wins.innerText = `Wins: ${players[0].wins}`
+  player1Wins.innerText = `Wins: ${players[1].wins}`
   
 }
 
@@ -165,6 +166,7 @@ function resetGame() {
     players[0].turn = true}
   for (var i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] !== '') {gameBoard[i] = ''}
+    announcement.innerText = '';
     showGrid();
     
   }
