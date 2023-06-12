@@ -64,6 +64,12 @@ h1 {
   color: white;
 }
 
+.announcement {
+  color: white;
+}
+.hidden {
+  display: none;
+}
 .play-grid {
   /* border: solid blue; */
   /* justify-content: center;
