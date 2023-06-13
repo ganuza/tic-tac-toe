@@ -18,7 +18,7 @@ body {
 
 .left-column,
 .right-column {
-  border: solid red;
+  /* border: solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ body {
 }
 
 .player-info {
-  border: solid white;
+  /* border: solid white; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +72,8 @@ h1 {
 .game-area {
   background-color: black;
   opacity: 0.8;
-  border: solid yellow;
+  border-left: solid white;
+  border-right: solid white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,9 +99,9 @@ h1 {
   color: white;
   height: 3vh;
 }
-.hidden {
-  display: none;
-}
+/* .hidden {
+  display: none; */
+/* } */
 .play-grid {
   /* border: solid blue; */
   /* justify-content: center;
