@@ -36,9 +36,11 @@ h2 {
 }
 
 h1 {
-  border: solid purple;
+  /* border: solid purple; */
   color: white;
   text-align: center;
+  font-size: 44px;
+  height: 3vh;
 }
 
 .triumph-icon {
@@ -65,8 +67,14 @@ h1 {
   width: 50%;
 }
 
-.banner {
-  color: white;
+.banner-ducati-icon {
+  height: 10vh;
+  width: 10vh;
+}
+
+.banner-triumph-icon {
+  height: 15vh;
+  width: 15vh;
 }
 
 .play-grid {

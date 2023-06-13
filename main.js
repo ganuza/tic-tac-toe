@@ -84,7 +84,8 @@ function createPlayer(id, token, turn) {
 
 function showPlayerTurn() {
   console.log('currentPlayer in showPlayerTurn:',currentPlayer)
-  playerTurn.innerText = `It's Player ${currentPlayer}'s Turn`
+  // playerTurn.innerText = `It's Player ${players[currentPlayer].token}'s Turn`
+  playerTurn.innerHTML = `<article><img class="banner-${players[currentPlayer].token}-icon" src="assets/${players[currentPlayer].token}_icon.png"/></article>`
 }
 
 function showGrid() {
