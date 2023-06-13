@@ -108,7 +108,7 @@ h1 {
   display: grid;
   margin-bottom: 100px;
   height: 50vh;
-  width: 35vw;
+  width: 30vw;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
