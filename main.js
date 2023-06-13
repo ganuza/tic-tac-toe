@@ -12,17 +12,11 @@ var win = false
 
 var playerTurn = document.querySelector('.banner-icon');
 
-// var gridSquareIds = document.querySelector('.play-grid');
-
 var playGrid = document.querySelector('.play-grid');
-
-// var gridSquare = document.querySelector('.grid-square');
 
 var player0Wins = document.querySelector('.player-0-wins');
 
 var player1Wins = document.querySelector('.player-1-wins');
-
-// var banner = document.querySelector('h1');
 
 var announcement = document.querySelector('.announcement')
 
@@ -33,7 +27,6 @@ window.addEventListener('load', function() {
   var ducatiIcon ='ducati'
   createPlayer('TRIUMPH', triumphIcon, true);
   createPlayer('DUCATI', ducatiIcon, false);
-  // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
 })
@@ -63,12 +56,6 @@ playGrid.addEventListener('click', function(event) {
   displayWins();
 })
  
-  // checkForDraw();
-
-
-// square0.addEventListener('click', showCurrentPlayerToken)
-
-
 // functions
 
 function createPlayer(id, token, turn) {
@@ -81,12 +68,6 @@ function createPlayer(id, token, turn) {
   players.push(player)
   return players
 }
-
-// function getRandomPlayer(numPlayers) {
-//   var startingPlayer = Math.floor(Math.random() * numPlayers.length + 1);
-//   console.log('start:', startingPlayer);
-//   return startingPlayer
-// }
 
 function showPlayerTurn() {
   console.log('currentPlayer in showPlayerTurn:',currentPlayer)
@@ -105,15 +86,6 @@ function showGrid() {
     }  
   }
 }
-
-
-// function showCurrentPlayerToken() {
-//   console.log('you clicked me')
-  
-//   square0.innerHTML = players[currentPlayer].token
-//  '<img class="triumph-icon" src="assets/triumph_motorcycles_icon.png" alt="Triumph Icon"/>'
-  
-// }
 
 function setCurrentPlayerTokenToGameBoardIndex(event) {
   var indexPos = event.target.closest('article').id
@@ -202,31 +174,3 @@ function resetGame() {
   showPlayerTurn();
   win = false;
 }
-// var gameBoard = {{player},{player2}};
-//  // cell num;
-//  // open: default true;
-//  // player:'';
-
-// //wins
-// //token
-// //isTurn
-
-// // cells 0 through 8
-
-// // object players
-//    moves:
-
-// array of all the moves
-
-// array of each player's moves
-
-// function checkForWin
-// array of winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-
-// function createPlayer(id, ) {
-//   var player = {
-//     id: id,
-//     token: X,
-//     wins: 0,
-//   }
-// }
