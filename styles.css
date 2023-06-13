@@ -24,10 +24,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(24, 108, 181);
-  opacity: 0.89;
   height: 27.5vh;
   width: 25vw;
+  background-color: rgb(24, 108, 181);
+  opacity: 0.89;
 }
 
 h2 {
@@ -37,10 +37,9 @@ h2 {
 }
 
 h1 {
-  color: white;
-  text-align: center;
-  font-size: 44px;
   height: 3vh;
+  font-size: 44px;
+  color: white;
   cursor: default;
 }
 
@@ -55,16 +54,16 @@ h1 {
 }
 
 .game-area {
-  background-color: black;
-  opacity: 0.8;
-  border-left: solid white;
-  border-right: solid white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 50%;
+  background-color: black;
+  opacity: 0.8;
+  border-left: solid white;
+  border-right: solid white;
 }
 
 .banner-ducati-icon {
@@ -78,17 +77,17 @@ h1 {
 }
 
 .announcement {
-  color: white;
   height: 3vh;
+  color: white;
 }
 
 .play-grid {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   margin-bottom: 100px;
   height: 50vh;
   width: 30vw;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .grid-square {
