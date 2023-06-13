@@ -27,32 +27,29 @@ window.addEventListener('load', function() {
   var ducatiIcon ='ducati'
   createPlayer('TRIUMPH', triumphIcon, true);
   createPlayer('DUCATI', ducatiIcon, false);
-  showGrid();
-  showPlayerTurn();
+  renderGrid();
+  showCurrentPlayerIcon();
 })
 
 playGrid.addEventListener('click', function(event) {
-  console.log('clicked square: ', event.target)
   if (win === true) {
     return
   }
-  setCurrentPlayerTokenToGameBoardIndex(event);
-  showGrid();
+  assignPlayerTokenToGameBoardVariable(event);
+  renderGrid();
   if (checkForWin()) {
     increaseWins()
     announcement.innerText = `${players[currentPlayer].id} Wins!`;
     setTimeout(resetGame, 3000);
-    // showPlayerTurn();
     displayWins();
     return
   } else if (checkForDraw(event)) {
     setTimeout(resetGame, 3000)
-    // showPlayerTurn();
     displayWins();
     return
   }
   togglePlayerTurn();
-  showPlayerTurn();
+  showCurrentPlayerIcon();
   displayWins();
 })
  
@@ -69,13 +66,11 @@ function createPlayer(id, token, turn) {
   return players
 }
 
-function showPlayerTurn() {
-  console.log('currentPlayer in showPlayerTurn:',currentPlayer)
-  // playerTurn.innerText = `It's Player ${players[currentPlayer].token}'s Turn`
+function showCurrentPlayerIcon() {
   playerTurn.innerHTML = `<article><img class="banner-${players[currentPlayer].token}-icon" src="assets/${players[currentPlayer].token}_icon.png"/></article>`
 }
 
-function showGrid() {
+function renderGrid() {
   playGrid.innerHTML = '';
   for (var i = 0; i < gameBoard.length; i ++) {
     if (gameBoard[i] === '') {
@@ -87,11 +82,11 @@ function showGrid() {
   }
 }
 
-function setCurrentPlayerTokenToGameBoardIndex(event) {
+function assignPlayerTokenToGameBoardVariable(event) {
   var indexPos = event.target.closest('article').id
-  var indexPosition = parseInt(indexPos.slice(-1))
-  if (gameBoard[indexPosition] === '') {
-    gameBoard[indexPosition] = players[currentPlayer].token
+  var indexPositionNum = parseInt(indexPos.slice(-1))
+  if (gameBoard[indexPositionNum] === '') {
+    gameBoard[indexPositionNum] = players[currentPlayer].token
   };
 }
 
@@ -107,8 +102,6 @@ function checkForWin() {
   // checks for row wins
   for (var i = 0; i < gameBoard.length; i +=3) {
     if (gameBoard[i] === gameBoard[i+1] && gameBoard[i+1] === gameBoard[i+2] && gameBoard[i] !== '') {
-      console.log('currentPlayer in checkForWin:',currentPlayer)
-      console.log(`player ${currentPlayer} wins!`)
       win = true;
       return true;
     }
@@ -116,20 +109,17 @@ function checkForWin() {
   // checks for column wins
   for (var i = 0; i < gameBoard.length; i ++) {
     if (gameBoard[i] === gameBoard[i+3] && gameBoard[i+3] === gameBoard[i+6] && gameBoard[i] !== '') {
-      console.log(`player ${currentPlayer} wins!`)
       win = true;
       return true;
     } 
   }
   // checks for diagonal win
   if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== '') {
-      console.log(`player ${currentPlayer} wins!`)
       win = true;
       return true;
   }
   // checks for diagonal win
   if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== '') {
-      console.log(`player ${currentPlayer} wins!`)
       win = true;
       return true;
   } 
@@ -142,7 +132,6 @@ function increaseWins() {
 
 function checkForDraw(event) {
   if (!gameBoard.includes('')) {
-    console.log(`It's a DRAW!`)
     announcement.innerText = "It's a DRAW!"
     return true;
   }
@@ -154,10 +143,7 @@ function displayWins() {
 }
 
 function resetGame() {
-  console.log('reset');
-  console.log('players[0].turn: ',players[0].turn)
   if (players[0].turn === true) {
-    console.log('TEST')
     currentPlayer = 1;
     players[0].turn = false;
   } else {
@@ -169,8 +155,8 @@ function resetGame() {
       gameBoard[i] = '';
     }
     announcement.innerText = '';
-    showGrid();
+    renderGrid();
   }
-  showPlayerTurn();
+  showCurrentPlayerIcon();
   win = false;
 }
