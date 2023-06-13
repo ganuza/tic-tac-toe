@@ -41,13 +41,13 @@ playGrid.addEventListener('click', function(event) {
   showGrid();
   if (checkForWin()) {
     increaseWins()
-    announcement.innerText = `player ${currentPlayer} wins!`;
-    setTimeout(resetGame, 7000);
+    announcement.innerText = `${players[currentPlayer].id} Wins!`;
+    setTimeout(resetGame, 3000);
     // showPlayerTurn();
     displayWins();
     return
   } else if (checkForDraw(event)) {
-    setTimeout(resetGame, 7000)
+    setTimeout(resetGame, 3000)
     // showPlayerTurn();
     displayWins();
     return
