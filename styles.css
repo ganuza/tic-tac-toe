@@ -1,3 +1,6 @@
+* {
+  font-family: Arial, Helvetica, sans-serif
+}
 
 body {
   display: flex;
@@ -5,6 +8,12 @@ body {
   background-size: cover;
   height: 100vh;
   width: 100%;
+}
+
+
+
+.main {
+  
 }
 
 .left-column,
@@ -31,13 +40,14 @@ body {
 }
 
 h2 {
-  border: solid green;
-  color: white;
+  /* border: solid green; */
+  color: black;
+  font-size: 36px;
 }
 
-.player-0-wins {
+/* .player-0-wins {
 
-}
+} */
 
 h1 {
   /* border: solid purple; */
@@ -48,13 +58,14 @@ h1 {
 }
 
 .triumph-icon {
-  height: 70px;
-  width: 70px;
+  height: 75px;
+  width: 75px;
 }
 
 .ducati-icon {
-  height: 50px;
-  width: 50px;
+  height: 55px;
+  width: 55px;
+  /* margin-top: 50px; */
 }
 .game-area {
   background-color: black;
@@ -81,6 +92,13 @@ h1 {
   width: 15vh;
 }
 
+.announcement {
+  color: white;
+  height: 3vh;
+}
+.hidden {
+  display: none;
+}
 .play-grid {
   /* border: solid blue; */
   /* justify-content: center;
