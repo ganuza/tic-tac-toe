@@ -5,20 +5,27 @@ var players = [];
 var gameBoard = ['','','','','','','','',''];
 
 var currentPlayer = 0;
+
 var win = false
+
 // query selectors
 
 var playerTurn = document.querySelector('.banner-icon');
-var gridSquareIds = document.querySelector('.play-grid');
+
+// var gridSquareIds = document.querySelector('.play-grid');
 
 var playGrid = document.querySelector('.play-grid');
 
-var gridSquare = document.querySelector('.grid-square');
+// var gridSquare = document.querySelector('.grid-square');
 
 var player0Wins = document.querySelector('.player-0-wins');
+
 var player1Wins = document.querySelector('.player-1-wins');
-var banner = document.querySelector('h1');
+
+// var banner = document.querySelector('h1');
+
 var announcement = document.querySelector('.announcement')
+
 // event listeners
 
 window.addEventListener('load', function() {
@@ -29,7 +36,6 @@ window.addEventListener('load', function() {
   // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
-
 })
 
 playGrid.addEventListener('click', function(event) {
@@ -90,16 +96,14 @@ function showPlayerTurn() {
 
 function showGrid() {
   playGrid.innerHTML = '';
-    for (var i = 0; i < gameBoard.length; i ++) {
-      if (gameBoard[i] === '') {
-        playGrid.innerHTML += `<article class="grid-square" id="square${i}"></article>`
-      } else {
-        playGrid.innerHTML += 
+  for (var i = 0; i < gameBoard.length; i ++) {
+    if (gameBoard[i] === '') {
+      playGrid.innerHTML += `<article class="grid-square" id="square${i}"></article>`
+    } else {
+      playGrid.innerHTML += 
       `<article class="grid-square" id="square${i}"><img class="${gameBoard[i]}-icon" src="assets/${gameBoard[i]}_icon.png" alt="${gameBoard[i]} icon"</article>`
-      }
-      
+    }  
   }
-
 }
 
 
@@ -122,7 +126,9 @@ function setCurrentPlayerTokenToGameBoardIndex(event) {
 function togglePlayerTurn() {
   if (currentPlayer === 0) {
     currentPlayer = 1;
-  } else currentPlayer = 0;
+  } else {
+    currentPlayer = 0;
+  }
 }
 
 function checkForWin() {
@@ -166,7 +172,6 @@ function checkForDraw(event) {
   if (!gameBoard.includes('')) {
     console.log(`It's a DRAW!`)
     announcement.innerText = "It's a DRAW!"
-    
     return true;
   }
 }
@@ -174,21 +179,23 @@ function checkForDraw(event) {
 function displayWins() {
   player0Wins.innerText = `Wins: ${players[0].wins}`
   player1Wins.innerText = `Wins: ${players[1].wins}`
-  
 }
 
 function resetGame() {
   console.log('reset');
   console.log('players[0].turn: ',players[0].turn)
-  
   if (players[0].turn === true) {
     console.log('TEST')
-      currentPlayer = 1;
-      players[0].turn = false;
-    } else {currentPlayer = 0;
-    players[0].turn = true}
+    currentPlayer = 1;
+    players[0].turn = false;
+  } else {
+    currentPlayer = 0;
+    players[0].turn = true;
+  }
   for (var i = 0; i < gameBoard.length; i++) {
-    if (gameBoard[i] !== '') {gameBoard[i] = ''}
+    if (gameBoard[i] !== '') {
+      gameBoard[i] = '';
+    }
     announcement.innerText = '';
     showGrid();
   }
