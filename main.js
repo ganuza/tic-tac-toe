@@ -8,7 +8,7 @@ var currentPlayer = 0;
 var win = false
 // query selectors
 
-var playerTurn = document.querySelector('h1');
+var playerTurn = document.querySelector('.banner-icon');
 var gridSquareIds = document.querySelector('.play-grid');
 
 var playGrid = document.querySelector('.play-grid');
@@ -24,8 +24,8 @@ var announcement = document.querySelector('.announcement')
 window.addEventListener('load', function() {
   var triumphIcon = 'triumph'
   var ducatiIcon ='ducati'
-  createPlayer('Triumph', triumphIcon, true);
-  createPlayer('Ducati', ducatiIcon, false);
+  createPlayer('TRIUMPH', triumphIcon, true);
+  createPlayer('DUCATI', ducatiIcon, false);
   // getRandomPlayer(players);
   showGrid();
   showPlayerTurn();
@@ -41,13 +41,13 @@ playGrid.addEventListener('click', function(event) {
   showGrid();
   if (checkForWin()) {
     increaseWins()
-    announcement.innerText = `player ${currentPlayer} wins!`;
-    setTimeout(resetGame, 7000);
+    announcement.innerText = `${players[currentPlayer].id} Wins!`;
+    setTimeout(resetGame, 3000);
     // showPlayerTurn();
     displayWins();
     return
   } else if (checkForDraw(event)) {
-    setTimeout(resetGame, 7000)
+    setTimeout(resetGame, 3000)
     // showPlayerTurn();
     displayWins();
     return
@@ -84,7 +84,8 @@ function createPlayer(id, token, turn) {
 
 function showPlayerTurn() {
   console.log('currentPlayer in showPlayerTurn:',currentPlayer)
-  playerTurn.innerText = `It's Player ${currentPlayer}'s Turn`
+  // playerTurn.innerText = `It's Player ${players[currentPlayer].token}'s Turn`
+  playerTurn.innerHTML = `<article><img class="banner-${players[currentPlayer].token}-icon" src="assets/${players[currentPlayer].token}_icon.png"/></article>`
 }
 
 function showGrid() {
@@ -222,4 +223,3 @@ function resetGame() {
 //     wins: 0,
 //   }
 // }
-

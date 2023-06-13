@@ -1,7 +1,18 @@
-.main {
+* {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+body {
   display: flex;
   justify-content: center;
   background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+
+
+.main {
   
 }
 
@@ -11,42 +22,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 600px;
-  width: 300px;
-  stop-opacity: initial;
+  height: 100%;
+  width: 25%;
+  /* stop-opacity: initial; */
 }
 
-.left-column {
-
-}
-
-.right-column {
-
+.player-info {
+  border: solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(24, 108, 181);
+  opacity: 0.89;
+  height: 23vh;
+  width: 25vw;
 }
 
 h2 {
-  border: solid green;
-  color: white;
+  /* border: solid green; */
+  color: black;
+  font-size: 36px;
 }
 
-.player-0-wins {
+/* .player-0-wins {
 
-}
+} */
 
 h1 {
-  border: solid purple;
+  /* border: solid purple; */
   color: white;
   text-align: center;
+  font-size: 44px;
+  height: 3vh;
 }
 
 .triumph-icon {
-  height: 70px;
-  width: 70px;
+  height: 75px;
+  width: 75px;
 }
 
 .ducati-icon {
-  height: 50px;
-  width: 50px;
+  height: 55px;
+  width: 55px;
+  /* margin-top: 50px; */
 }
 .game-area {
   background-color: black;
@@ -54,23 +73,40 @@ h1 {
   border: solid yellow;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 600px;
-  width: 500px;
+  /* margin-top: 50px; */
+  /* padding-top: 50px; */
+  /* padding-bottom: 50px; */
+  height: 100%;
+  width: 50%;
 }
 
-.banner {
+.banner-ducati-icon {
+  height: 10vh;
+  width: 10vh;
+}
+
+.banner-triumph-icon {
+  height: 15vh;
+  width: 15vh;
+}
+
+.announcement {
   color: white;
+  height: 3vh;
 }
-
+.hidden {
+  display: none;
+}
 .play-grid {
   /* border: solid blue; */
   /* justify-content: center;
   align-items: center; */
   display: grid;
-  height: 35vh;
-  width: 30vw;
+  margin-bottom: 100px;
+  height: 50vh;
+  width: 35vw;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
