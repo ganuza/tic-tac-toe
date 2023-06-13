@@ -43,6 +43,7 @@ h2 {
   /* border: solid green; */
   color: black;
   font-size: 36px;
+  cursor: default;
 }
 
 /* .player-0-wins {
@@ -55,6 +56,7 @@ h1 {
   text-align: center;
   font-size: 44px;
   height: 3vh;
+  cursor: default;
 }
 
 .triumph-icon {
@@ -118,6 +120,7 @@ h1 {
   align-items: center;
   color: white;
   font-size: 32px;
+  cursor: pointer;
 }
 
 #square1 {

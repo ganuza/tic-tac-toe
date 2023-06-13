@@ -13,7 +13,7 @@ var gridSquareIds = document.querySelector('.play-grid');
 
 var playGrid = document.querySelector('.play-grid');
 
-var gridSquares = document.querySelectorAll('.grid-squares');
+var gridSquare = document.querySelector('.grid-square');
 
 var player0Wins = document.querySelector('.player-0-wins');
 var player1Wins = document.querySelector('.player-1-wins');
