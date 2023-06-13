@@ -18,12 +18,16 @@ body {
   /* stop-opacity: initial; */
 }
 
-.left-column {
-
-}
-
-.right-column {
-
+.player-info {
+  border: solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(24, 108, 181);
+  opacity: 0.89;
+  height: 23vh;
+  width: 25vw;
 }
 
 h2 {
