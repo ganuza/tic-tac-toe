@@ -16,7 +16,7 @@ To clone down this repository to your local machine:
 
 ### Preview of App:
 
-<img width="1428" alt="Screenshot 2023-06-13 at 7 25 03 PM" src="https://github.com/ganuza/tic-tac-toe/assets/31826116/1974cdd6-b1a7-464d-b090-105bf5da729e">
+<img width="1428" alt="Screenshot 2023-06-13 at 7 25 03 PM" src="https://github.com/ganuza/tic-tac-toe/assets/31826116/cc24b07e-deae-4119-ac17-7d633725f2fe">
 
 
 ### Context:
