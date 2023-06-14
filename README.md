@@ -4,6 +4,10 @@
 
 The Tic-Tac-Toe Project is my Final Solo Project of Module 1 of Turing School.  The project lets users play Tic-Tac-Toe by placing tokens on the board and then will check for and announce wins or draws.  Upon a win, the score for that winner is incremented.  A different player starts each game and players toggle back and forth as between turns.  After a winner is declared, users can no longer place tokens in any open spaces on the grid.  And finally, after a win or a draw, the game resets after a timeout.
 
+### Deployed Page
+
+https://ganuza.github.io/tic-tac-toe/
+
 ### Installation instructions
 
 To clone down this repository to your local machine:
