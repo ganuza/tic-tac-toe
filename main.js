@@ -35,7 +35,7 @@ playGrid.addEventListener('click', function(event) {
   if (win === true) {
     return
   }
-  assignPlayerTokenToGameBoardVariable(event);
+  assignTokenToGameBoard(event);
   renderGrid();
   if (checkForWin()) {
     increaseWins()
@@ -82,7 +82,7 @@ function renderGrid() {
   }
 }
 
-function assignPlayerTokenToGameBoardVariable(event) {
+function assignTokenToGameBoard(event) {
   var indexPos = event.target.closest('article').id
   var indexPositionNum = parseInt(indexPos.slice(-1))
   if (gameBoard[indexPositionNum] === '') {
