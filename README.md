@@ -1,4 +1,4 @@
-# Ideabox
+# Tic Tac Toe
 
 ### Abstract
 
